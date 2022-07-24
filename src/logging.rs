@@ -78,7 +78,7 @@ pub fn init_global_tracing(
     app_name: &str,
     dir: &str,
     level: &str,
-    enable_stdout: Option<bool>,
+    disable_stdout: Option<bool>,
 ) -> Vec<WorkerGuard> {
     let mut guards = vec![];
 
@@ -128,7 +128,7 @@ pub fn init_global_tracing(
         );
     }
 
-    let stdout_layer = if enable_stdout == Some(false) {
+    let stdout_layer = if disable_stdout == Some(true) {
         None
     } else {
         Some(fmt::layer().with_ansi(atty::is(atty::Stream::Stdout)))
