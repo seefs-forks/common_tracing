@@ -5,7 +5,8 @@ fork from https://github.com/datafuselabs/databend/tree/main/common/tracing
 ```rust
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    common_tracing::init_global_tracing("test", "/home/seefs/logs", "debug", None);
+    // 注意要声明 变量
+    let _guard = common_tracing::init_global_tracing("test", "/home/seefs/logs", "debug", None);
 
     info!("test");
     error!("test");
