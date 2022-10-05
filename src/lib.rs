@@ -12,29 +12,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#![feature(backtrace)]
+#![deny(unused_crate_dependencies)]
+
+pub use config::Config;
+pub use config::FileConfig;
+pub use config::StderrConfig;
+pub use logging::init_logging;
+pub use logging::init_query_logger;
+pub use logging::QueryLogger;
+pub use panic_hook::log_panic;
+pub use panic_hook::set_panic_hook;
+pub use tracing_to_jaeger::extract_remote_span_as_parent;
+pub use tracing_to_jaeger::inject_span_to_tonic_request;
 
 #[macro_use]
 mod macros;
-
 mod config;
 mod logging;
 mod panic_hook;
 mod tracing_to_jaeger;
-
-pub use config::Config;
-pub use logging::init_default_ut_tracing;
-pub use logging::init_global_tracing;
-pub use logging::init_meta_ut_tracing;
-pub use logging::init_query_logger;
-pub use panic_hook::log_panic;
-pub use panic_hook::set_panic_hook;
-pub use tracing;
-pub use tracing_appender;
-pub use tracing_futures;
-pub use tracing_subscriber;
-pub use tracing_to_jaeger::extract_remote_span_as_parent;
-pub use tracing_to_jaeger::inject_span_to_tonic_request;
+mod singleton_instance;
 
 #[macro_export]
 macro_rules! func_name {
