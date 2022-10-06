@@ -29,7 +29,7 @@ impl Config {
             file: FileConfig {
                 on: true,
                 level: "DEBUG".to_string(),
-                dir: "./.databend/logs".to_string(),
+                dir: "./logs".to_string(),
             },
             stderr: StderrConfig {
                 on: true,
@@ -63,7 +63,7 @@ impl Default for FileConfig {
         Self {
             on: true,
             level: "INFO".to_string(),
-            dir: "./.databend/logs".to_string(),
+            dir: "./logs".to_string(),
         }
     }
 }
